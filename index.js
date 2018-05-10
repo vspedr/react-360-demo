@@ -4,17 +4,31 @@ import {
   StyleSheet,
   Text,
   View,
+  VrButton,
 } from 'react-360';
 
 export default class react_360_demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: 'Not clicked'
+    }
+  }
+
+  handleClick() {
+    this.setState({
+      text: 'clicked',
+    })
+  }
   render() {
+    const { text } = this.state;
     return (
       <View style={styles.panel}>
-        <View style={styles.greetingBox}>
+        <VrButton style={styles.greetingBox} onClick={() => this.handleClick()}>
           <Text style={styles.greeting}>
-            Welcome to React 360
+            {text}
           </Text>
-        </View>
+        </VrButton>
       </View>
     );
   }
